@@ -17,6 +17,25 @@ Movie *movie;
 struct Node *next;
 }Node;
 
+typedef struct GenHash{
+Node **head;
+int size;
+}HashTable;
+
+HashTable *createHashTable(int size){
+    HashTable *table = (HashTable*)malloc(sizeof(HashTable));
+  if(table == NULL){
+    return NULL;
+  }
+  table->size = size;
+  table->head = (Node**)calloc(size, sizeof(Node*));
+  if(table->head == NULL){
+    free(table);
+    return NULL;
+  }
+  return table;
+}
+
 Movie *input_movie(const char *filename, int *nmovies){
   FILE *file = fopen(filename, "r");
   if (file == NULL){
