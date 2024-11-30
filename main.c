@@ -130,6 +130,7 @@ int main() {
   printf("%s %s %f %d", movies[0].title, movies[0].genre, movies[0].rating,movies[0].time);
   printf("\n%s %s %f %d", movies[15].title, movies[15].genre, movies[15].rating,movies[15].time);
 
+  //prueba de buscar por generos
   group_by_genre(movies, nmovies);
   free(movies);
 
