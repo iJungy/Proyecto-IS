@@ -62,7 +62,7 @@ Movie *input_movie(const char *filename, int *nmovies) {
       fclose(file);
       return NULL;
     }
-    sscanf(line, "%[^,],%[^,],%d,%d", (movies[*nmovies - 1].title),
+    scanf(line, "%[^,],%[^,],%d,%d", (movies[*nmovies - 1].title),
            (movies[*nmovies - 1].genre), &(movies[*nmovies - 1].rating),
            &(movies[*nmovies - 1].time));
   }
