@@ -18,3 +18,4 @@ La Vida es Bella, Drama, 8.6, 116
 Mad Max: Furia en el Camino, Action, 8.1, 120
 Coco, Animation, 8.4, 105
 El Laberinto del Fauno, Fantasy, 8.2, 118
+Harry Potter y la piedra filosofal, Fantasy, 7.6, 152
