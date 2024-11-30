@@ -8,7 +8,7 @@
 typedef struct Movie {
   char title[MAX_TITLE];
   char genre[MAX_GEN];
-  int rating;
+  float rating;
   int time;
 } Movie;
 
@@ -62,12 +62,61 @@ Movie *input_movie(const char *filename, int *nmovies) {
       fclose(file);
       return NULL;
     }
-    sscanf(line, "%[^,],%[^,],%d,%d", (movies[*nmovies - 1].title),
+    sscanf(line, "%[^,],%[^,],%f,%d", (movies[*nmovies - 1].title),
            (movies[*nmovies - 1].genre), &(movies[*nmovies - 1].rating),
            &(movies[*nmovies - 1].time));
   }
   fclose(file);
   return movies;
+}
+
+//intercambiar peliculas
+void swap(Movie *a, Movie *b) {
+  Movie temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
+//particio para el quicksort
+int partition(Movie arr[], int low, int high) {
+  char *pivot = arr[high].genre;
+  int i = low - 1;
+  for (int j = low; j < high; j++) {
+    if (strcmp(arr[j].genre, pivot) < 0) {  // Orden lexicográfico
+      i++;
+      swap(&arr[i], &arr[j]);
+    }
+  }
+  swap(&arr[i + 1], &arr[high]);
+  return i + 1;
+}
+
+//quicksort
+void quicksort(Movie arr[], int low, int high) {
+  if (low < high) {
+    int pi = partition(arr, low, high);
+    quicksort(arr, low, pi - 1);
+    quicksort(arr, pi + 1, high);
+  }
+}
+
+//funcion que agrupa las peliculas por genero con quicksort
+void group_by_genre(Movie movies[], int nmovies) {
+  // Ordenar las películas por género
+  quicksort(movies, 0, nmovies - 1);
+
+  //agrupa e imprime
+  printf("Peliculas agrupadas por genero:\n");
+  char current_genre[50] = "";
+  for (int i = 0; i < nmovies; i++) {
+    if (strcmp(current_genre, movies[i].genre) != 0) {
+      //nuevo gen encontrado
+      strcpy(current_genre, movies[i].genre);
+      printf("\nGenero: %s\n", current_genre);
+    }
+    printf("  Titulo: %s, Rating: %f, Duracion: %d\n",
+           movies[i].title, movies[i].rating, movies[i].time);
+  }
 }
 
 int main() {
@@ -78,8 +127,12 @@ int main() {
     return 1;
   }
 
-  printf("%s", movies[0].title);
+  printf("%s %s %f %d", movies[0].title, movies[0].genre, movies[0].rating,movies[0].time);
+  printf("\n%s %s %f %d", movies[15].title, movies[15].genre, movies[15].rating,movies[15].time);
 
+  group_by_genre(movies, nmovies);
   free(movies);
+
+
   return 0;
 }
