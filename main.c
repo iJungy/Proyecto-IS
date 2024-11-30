@@ -62,7 +62,7 @@ Movie *input_movie(const char *filename, int *nmovies) {
       fclose(file);
       return NULL;
     }
-    scanf(line, "%[^,],%[^,],%d,%d", (movies[*nmovies - 1].title),
+    sscanf(line, "%[^,],%[^,],%d,%d", (movies[*nmovies - 1].title),
            (movies[*nmovies - 1].genre), &(movies[*nmovies - 1].rating),
            &(movies[*nmovies - 1].time));
   }
@@ -77,6 +77,8 @@ int main() {
     printf("Error reading movies\n");
     return 1;
   }
+
+  printf("%s", movies[0].title);
 
   free(movies);
   return 0;
