@@ -70,6 +70,7 @@ Movie *input_movie(const char *filename, int *nmovies) {
   return movies;
 }
 
+//--------------Funciones para agrupar peliculas por genero----------------------------
 //intercambiar peliculas
 void swap(Movie *a, Movie *b) {
   Movie temp = *a;
@@ -114,10 +115,12 @@ void group_by_genre(Movie movies[], int nmovies) {
       strcpy(current_genre, movies[i].genre);
       printf("\nGenero: %s\n", current_genre);
     }
-    printf("  Titulo: %s, Rating: %f, Duracion: %d\n",
+    printf("  Titulo: %s, Rating: %.2f, Duracion: %d\n",
            movies[i].title, movies[i].rating, movies[i].time);
   }
 }
+//-------------------------------------------------------------------------------
+
 
 int main() {
   int nmovies;
@@ -127,13 +130,63 @@ int main() {
     return 1;
   }
 
-  printf("%s %s %f %d", movies[0].title, movies[0].genre, movies[0].rating,movies[0].time);
-  printf("\n%s %s %f %d", movies[15].title, movies[15].genre, movies[15].rating,movies[15].time);
+  int x;
+  printf("\n+--------------------------------------------------------------+\n");
+  printf("|                       Bienvenido a UVetflix                  |\n");
+  printf("+--------------------------------------------------------------+");
+  do {
+    printf("\n+--------------------------------------------------------------+\n");
+    printf("|                          MENU PRINCIPAL                      |\n");
+    printf("+--------------------------------------------------------------+\n");
+    printf("| 1. Mostrar peliculas por genero                              |\n");
+    printf("| 2. Mostrar top 10                                            |\n");
+    printf("| 3. Calcular cuantas peliculas puede ver en el tiempo deseado |\n");
+    printf("| 4. Buscar pelicula                                           |\n");
+    printf("| 5. Ver primer pelicula en el historial                       |\n");
+    printf("| 6. Ver todo el historial de peliculas vistas                 |\n");
+    printf("| 7. Salir                                                     |\n");
+    printf("+--------------------------------------------------------------+\n");
+    printf("Elija la opcion deseada: ");
+    scanf("%d", &x);
+    getchar();
 
-  //prueba de buscar por generos
-  group_by_genre(movies, nmovies);
+    switch (x) {
+      case 1: {
+        //prueba de ordenar por generos
+        group_by_genre(movies, nmovies);
+        break;
+      }
+      case 2: {
+        printf("%s %s %f %d", movies[0].title, movies[0].genre, movies[0].rating,movies[0].time);
+        printf("\n%s %s %f %d", movies[15].title, movies[15].genre, movies[15].rating,movies[15].time);
+        //ToDo: Mostrar top 10
+        break;
+      }
+      case 3: {
+        //ToDo: Calcular peliculas en t
+        break;
+      }
+      case 4: {
+        //ToDo: Buscar pelicula
+        break;
+      }
+      case 5: {
+        //ToDo: Ver primer pelicula en el historial
+        break;
+      }
+      case 6: {
+        //ToDo: Ver todo el historial
+        break;
+      }
+      case 7:
+        printf("Saliendo del programa...\n");
+      break;
+      default:
+        printf("Opcion no valida.\n");
+    }
+  } while (x != 7);
+
   free(movies);
-
 
   return 0;
 }
