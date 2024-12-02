@@ -415,7 +415,7 @@ int main() {
         break;
       }
       case 7:
-        printf("Saliendo del programa...\n");
+        printf("Saliendo del programa.\n");
       break;
       default:
         printf("Opcion no valida.\n");
