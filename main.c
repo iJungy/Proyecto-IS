@@ -69,7 +69,6 @@ Movie *input_movie(const char *filename, int *nmovies) {
   fclose(file);
   return movies;
 }
-
 //--------------Funciones para agrupar peliculas por genero----------------------------
 //intercambiar peliculas
 void swap(Movie *a, Movie *b) {
@@ -121,7 +120,45 @@ void group_by_genre(Movie movies[], int nmovies) {
 }
 //-------------------------------------------------------------------------------
 
+// ----------------------------TOP 10------------------------------------------------
+// ----------------------------HEAPSORT----------------------------------
+void heap(Movie arr[],int n, int  i) {
+  int large = i;
+  int left = 2 * i + 1;
+  int right = 2 * i + 2;
 
+  if (left < n && arr[left].rating > arr[large].rating)
+    large = left;
+
+  if (right < n && arr[right].rating > arr[large].rating)
+    large = right;
+
+  if (large!= i) {
+    swap(&arr[i], &arr[large]);
+    heap(arr, n, large);
+  }
+}
+
+void heapSort(Movie arr[], int n) {
+  for (int i = n / 2 - 1; i >= 0; i--)
+      heap(arr, n, i);
+
+  for (int i=n-1; i>0; i--)
+    {
+      swap(&arr[0], &arr[i]);
+      heap(arr, i, 0);
+    }
+}
+
+void showtop10(Movie movie[], int num_movies) {
+  printf("\nTop 10 peliculas:\n");
+  heapSort(movie, num_movies);
+  for (int i = 0; i < 10; i++) {
+    printf("Titulo: %s, Rating: %.2f, Duracion: %d\n", movie[i].title, movie[i].rating, movie[i].time);
+  }
+}
+
+// ----------------------------------------------------------------------------
 int main() {
   int nmovies;
   Movie *movies = input_movie("peliculas.txt", &nmovies);
@@ -132,7 +169,7 @@ int main() {
 
   int x;
   printf("\n+--------------------------------------------------------------+\n");
-  printf("|                       Bienvenido a UVetflix                  |\n");
+  printf("|                       Bienvenido a UVetflix                       |\n");
   printf("+--------------------------------------------------------------+");
   do {
     printf("\n+--------------------------------------------------------------+\n");
