@@ -19,3 +19,6 @@ Mad Max: Furia en el Camino, Action, 8.1, 120
 Coco, Animation, 8.4, 105
 El Laberinto del Fauno, Fantasy, 8.2, 118
 Harry Potter y la piedra filosofal, Fantasy, 7.6, 152
+Harry Potter y la camara secreta, Fantasy, 7.4, 161
+Harry Potter y el prisionero de Azkaban, Fantasy, 7.9, 142
+Harry Potter y el caliz de fuego, Fantasy, 7.7, 157
