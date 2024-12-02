@@ -159,6 +159,56 @@ void showtop10(Movie movie[], int num_movies) {
 }
 
 // ----------------------------------------------------------------------------
+
+// --------------- Peliculas por estrellas ------------------------------------
+
+void countingsortrating(Movie movies[],int num_movies) {
+  int max = 5;
+  int min = 1;
+  int rango = max - min +1;
+
+  // contador para la calificacion
+  int count[rango];
+  memset(count, 0, sizeof(count));
+
+  // Array para almacenar los resultados ordenados
+  Movie *rs = (Movie *)malloc(num_movies * sizeof(Movie));
+  if (rs == NULL) {
+    printf("Error al asignar memoria\n");
+    return;
+  }
+
+  // contar las veces que aparecen la calificacion
+  for (int i= 0; i<num_movies; i++) {
+    count[movies[i].rating - min]++;
+  }
+
+  // calcular las posiciones acumuladas
+  for (int i=1;i<rango;i++ ) {
+    count[i] += count[i-1];
+  }
+
+  // construimos de nuevo el array ordenado
+  for (int i = num_movies -1 ;i>= 0;i--) {
+    int position = (int)movies[i].rating - min;
+    rs[count[position]-1] = movies[1];
+    count[position]--;
+  }
+
+  // copiamos el resultado al arreglo original
+  for (int i =0; i<num_movies; i++) {
+    movies[i] = rs[i];
+  }
+
+  free(rs);
+
+  printf("\nPeliculas por estrellas:\n");
+  for (int i = 0; i < num_movies; i++) {
+    printf("Titulo: %s, Rating: %.2f, Duracion: %d\n", movies[i].title, movies[i].rating, movies[i].time);
+  }
+
+}
+// ------------------------------------------------------------------------------
 int main() {
   int nmovies;
   Movie *movies = input_movie("peliculas.txt", &nmovies);
