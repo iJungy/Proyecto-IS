@@ -5,6 +5,14 @@
 #define MAX_TITLE 100
 #define MAX_GEN 50
 
+#define RED     "\x1b[31m"
+#define YELLOW  "\x1b[33m"
+#define BLUE    "\x1b[34m"
+#define MAGENTA "\x1b[35m"
+#define CYAN    "\x1b[36m"
+#define RESET   "\x1b[0m"
+#define GREEN   "\x1b[32m"
+
 typedef struct Movie {
   char title[MAX_TITLE];
   char genre[MAX_GEN];
@@ -397,7 +405,6 @@ void showtop10(Movie movie[], int num_movies) {
 // }
 // ------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------
-
 int main() {
   int nmovies;
   Queue movieQueue;
@@ -411,7 +418,7 @@ int main() {
   }
 
   int x;
-  printf("\n+--------------------------------------------------------------+\n");
+  printf(MAGENTA"\n+--------------------------------------------------------------+""\n");
   printf("|                       Bienvenido a UVetflix                  |\n");
   printf("+--------------------------------------------------------------+");
   do {
@@ -420,13 +427,13 @@ int main() {
     printf("+--------------------------------------------------------------+\n");
     printf("| 1. Mostrar peliculas por genero                              |\n");
     printf("| 2. Mostrar top 10                                            |\n");
-    printf("| 3. Películas ordenadas por calificación (1-5 estrellas)    |\n");
+    printf("| 3. Peliculas ordenadas por calificacion (1-5 estrellas)      |\n");
     printf("| 4. Calcular cuantas peliculas puede ver en el tiempo deseado |\n");
     printf("| 5. Buscar pelicula                                           |\n");
     printf("| 6. Ver primer pelicula en el historial                       |\n");
     printf("| 7. Ver todo el historial de peliculas vistas                 |\n");
     printf("| 8. Salir                                                     |\n");
-    printf("+--------------------------------------------------------------+\n");
+    printf("+--------------------------------------------------------------+"RESET"\n");
     printf("Elija la opcion deseada: ");
     scanf("%d", &x);
     getchar();
@@ -513,7 +520,7 @@ int main() {
       default:
         printf("Opcion no valida.\n");
     }
-  } while (x != 7);
+  } while (x != 8);
 
   free(movies);
 
