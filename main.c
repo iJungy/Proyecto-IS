@@ -313,10 +313,10 @@ void heap(Movie arr[],int n, int  i) {
   int left = 2 * i + 1;
   int right = 2 * i + 2;
 
-  if (left < n && arr[left].rating > arr[large].rating)
+  if (left < n && arr[left].rating < arr[large].rating)
     large = left;
 
-  if (right < n && arr[right].rating > arr[large].rating)
+  if (right < n && arr[right].rating < arr[large].rating)
     large = right;
 
   if (large!= i) {
