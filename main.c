@@ -280,7 +280,7 @@ void enqueue(Queue *queue, Movie *movie) {
 //eliminar la primer pelicula vista del historial
 Movie *dequeue(Queue *queue) {
   if (queue->inicio == NULL) {
-    printf("El historial está vacio.\n");
+    printf("El historial esta vacio.\n");
     return NULL;
   }
 
@@ -314,8 +314,8 @@ void mostrarhistorial(Queue *queue) {
 }
 
 //-------------------------------------------------------------------------------
-// ----------------------------TOP 10------------------------------------------------
-// ----------------------------HEAPSORT----------------------------------
+// ----------------------------TOP 10--------------------------------------------
+// ----------------------------HEAPSORT------------------------------------------
 void heap(Movie arr[],int n, int  i) {
   int large = i;
   int left = 2 * i + 1;
@@ -405,32 +405,25 @@ void showtop10(Movie movie[], int num_movies) {
 // }
 // ------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------
-int main() {
-  int nmovies;
-  Queue movieQueue;
-  initQueue(&movieQueue);
 
-
-  Movie *movies = input_movie("peliculas.txt", &nmovies);
-  if (movies == NULL) {
-    printf("Error reading movies\n");
-    return 1;
-  }
-
+// --------------- Metodo para menu --------------------------------------------
+void menu(Movie *movies, int nmovies, Queue *movieQueue) {
   int x;
-  printf(MAGENTA"\n+--------------------------------------------------------------+""\n");
+
+  printf(MAGENTA"\n+--------------------------------------------------------------+\n");
   printf("|                       Bienvenido a UVetflix                  |\n");
-  printf("+--------------------------------------------------------------+");
+  printf("+--------------------------------------------------------------+"RESET"\n");
+
   do {
-    printf("\n+--------------------------------------------------------------+\n");
+    printf(MAGENTA"+--------------------------------------------------------------+\n");
     printf("|                          MENU PRINCIPAL                      |\n");
     printf("+--------------------------------------------------------------+\n");
-    printf("| 1. Mostrar peliculas por genero                              |\n");
+    printf("| 1. Mostrar peliculas agrupadas por genero                    |\n");
     printf("| 2. Mostrar top 10                                            |\n");
     printf("| 3. Peliculas ordenadas por calificacion (1-5 estrellas)      |\n");
     printf("| 4. Calcular cuantas peliculas puede ver en el tiempo deseado |\n");
     printf("| 5. Buscar pelicula                                           |\n");
-    printf("| 6. Ver primer pelicula en el historial                       |\n");
+    printf("| 6. Ver y eliminar primer pelicula en el historial            |\n");
     printf("| 7. Ver todo el historial de peliculas vistas                 |\n");
     printf("| 8. Salir                                                     |\n");
     printf("+--------------------------------------------------------------+"RESET"\n");
@@ -439,30 +432,24 @@ int main() {
     getchar();
 
     switch (x) {
-      case 1: {
-        //prueba de ordenar por generos
+      case 1:
         group_by_genre(movies, nmovies);
         break;
-      }
-      case 2: {
+      case 2:
         showtop10(movies, nmovies);
         break;
-      }
-      case 3: {
-        // countingsortrating(movies,nmovies);
+      case 3:
+        //countingsortrating(movies, nmovies);
         break;
-      }
-      case 4: {
+      case 4:
         //ToDo: Calcular peliculas en t
         break;
-      }
       case 5: {
         char keyword[MAX_TITLE];
         printf("Introduce una palabra clave: ");
         fgets(keyword, sizeof(keyword), stdin);
-        strtok(keyword, "\n"); // Eliminar salto de linea
+        strtok(keyword, "\n"); //eliminar salto de línea
 
-        //crear un array para almacenar los resultados
         int matchedIndices[nmovies];
         int matchCount = 0;
 
@@ -486,12 +473,12 @@ int main() {
 
           if (response == 's' || response == 'S') {
             int choice;
-            printf("Seleccione el numero de la pelicula: ");
+            printf("Seleccione el numero de la pelicula que desea ver: ");
             scanf("%d", &choice);
             getchar();
 
             if (choice > 0 && choice <= matchCount) {
-              enqueue(&movieQueue, &movies[matchedIndices[choice - 1]]);
+              enqueue(movieQueue, &movies[matchedIndices[choice - 1]]);
             } else {
               printf("Seleccion invalida.\n");
             }
@@ -500,27 +487,44 @@ int main() {
         break;
       }
       case 6: {
-        Movie *firstMovie = dequeue(&movieQueue);
+        Movie *firstMovie = dequeue(movieQueue);
         if (firstMovie != NULL) {
           printf("La primera pelicula en el historial es: %s\n", firstMovie->title);
           printf("Se ha eliminado '%s' del historial de reproduccion.\n", firstMovie->title);
         } else {
-          printf("El historial está vacio.\n");
-
+          printf("El historial está vacío.\n");
         }
         break;
       }
-      case 7: {
-        mostrarhistorial(&movieQueue);
+      case 7:
+        mostrarhistorial(movieQueue);
         break;
-      }
       case 8:
         printf("Saliendo del programa.\n");
-      break;
+        break;
       default:
         printf("Opcion no valida.\n");
     }
   } while (x != 8);
+}
+
+
+// ------------------------------------------------------------------------------
+
+
+int main() {
+  int nmovies;
+  Queue movieQueue;
+  initQueue(&movieQueue);
+
+
+  Movie *movies = input_movie("peliculas.txt", &nmovies);
+  if (movies == NULL) {
+    printf("Error reading movies\n");
+    return 1;
+  }
+
+  menu(movies, nmovies, &movieQueue);
 
   free(movies);
 
