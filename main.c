@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #define MAX_TITLE 100
 #define MAX_GEN 50
@@ -357,52 +358,73 @@ void showtop10(Movie movie[], int num_movies) {
 
 // --------------- Peliculas por estrellas ------------------------------------
 //
-// void countingsortrating(Movie movies[],int num_movies) {
-//   int max = 5;
-//   int min = 1;
-//   int rango = max - min +1;
-//
-//   // contador para la calificacion
-//   int count[rango];
-//   memset(count, 0, sizeof(count));
-//
-//   // Array para almacenar los resultados ordenados
-//   Movie *rs = (Movie *)malloc(num_movies * sizeof(Movie));
-//   if (rs == NULL) {
-//     printf("Error al asignar memoria\n");
-//     return;
-//   }
-//
-//   // contar las veces que aparecen la calificacion
-//   for (int i= 0; i<num_movies; i++) {
-//     count[movies[i].rating - min]++;
-//   }
-//
-//   // calcular las posiciones acumuladas
-//   for (int i=1;i<rango;i++ ) {
-//     count[i] += count[i-1];
-//   }
-//
-//   // construimos de nuevo el array ordenado
-//   for (int i = num_movies -1 ;i>= 0;i--) {
-//     int position = (int)movies[i].rating - min;
-//     rs[count[position]-1] = movies[1];
-//     count[position]--;
-//   }
-//
-//   // copiamos el resultado al arreglo original
-//   for (int i =0; i<num_movies; i++) {
-//     movies[i] = rs[i];
-//   }
-//
-//   free(rs);
-//
-//   printf("\nPeliculas por estrellas:\n");
-//   for (int i = 0; i < num_movies; i++) {
-//     printf("Titulo: %s, Rating: %.2f, Duracion: %d\n", movies[i].title, movies[i].rating, movies[i].time);
-//   }
-//
-// }
+void countingsortrating(Movie movies[], int num_movies) {
+    // Ponemos el rango de rating que tenemos en el documento
+    float min_rating = movies[0].rating;
+    float max_rating = movies[0].rating;
+    for (int i = 1; i < num_movies; i++) {
+        if (movies[i].rating < min_rating) min_rating = movies[i].rating;
+        if (movies[i].rating > max_rating) max_rating = movies[i].rating;
+    }
+
+    // Redondeamos las cantidades
+    int min = (int)floor(min_rating);
+    int max = (int)ceil(max_rating);
+    int range = max - min + 1;
+
+    // Creamos el array
+    int *count = (int *)calloc(range, sizeof(int));
+    if (count == NULL) {
+        printf("Error al asignar memoria\n");
+        return;
+    }
+
+    // Guardamos el conteo de cada ratign
+    for (int i = 0; i < num_movies; i++) {
+        int index = (int)round(movies[i].rating) - min;
+        if (index >= 0 && index < range) {
+            count[index]++;
+        }
+    }
+
+    // Cambiar el conteo -> count[i] para que se igual a la posicion actual
+    for (int i = 1; i < range; i++) {
+        count[i] += count[i-1];
+    }
+
+    // Creamos el array dfonde se guardan los resultados ordenads
+    Movie *output = (Movie *)malloc(num_movies * sizeof(Movie));
+    if (output == NULL) {
+        printf("Error al asignar memoria\n");
+        free(count);
+        return;
+    }
+
+    // Ordenamos los elementos
+    for (int i = num_movies - 1; i >= 0; i--) {
+        int index = (int)round(movies[i].rating) - min;
+        if (index >= 0 && index < range) {
+            output[count[index] - 1] = movies[i];
+            count[index]--;
+        }
+    }
+
+    // Ponemos el arreglo de salida sobre el orginal
+    for (int i = 0; i < num_movies; i++) {
+        movies[i] = output[i];
+    }
+
+    // Imprimimos las pelioculas de mayor a menor
+    printf("Peliculas ordenadas por calificacion (%.1f-%.1f estrellas):\n", max_rating, min_rating);
+    for (int i = num_movies -1; i >= 0; i--) {
+        printf("Titulo: %s, Rating: %.1f, Duracion: %d\n",
+               movies[i].title, movies[i].rating, movies[i].time);
+    }
+
+    // Liberamos memoria
+    free(count);
+    free(output);
+}
 // ------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------
 
@@ -439,7 +461,7 @@ void menu(Movie *movies, int nmovies, Queue *movieQueue) {
         showtop10(movies, nmovies);
         break;
       case 3:
-        //countingsortrating(movies, nmovies);
+        countingsortrating(movies, nmovies);
         break;
       case 4:
         //ToDo: Calcular peliculas en t
