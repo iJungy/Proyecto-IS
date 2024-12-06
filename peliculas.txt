@@ -1,24 +1,145 @@
-Vuelta al centro de la tierra, Action, 5.4, 90
+Journey to the Center of the Earth, Action, 5.4, 90
 Inception, Sci-Fi, 8.8, 148
-El Padrino, Crime, 9.2, 175
-El Señor de los Anillos: La Comunidad del Anillo, Fantasy, 8.8, 178
+The Godfather, Crime, 9.2, 175
+The Lord of the Rings: The Fellowship of the Ring, Fantasy, 8.8, 178
 Forrest Gump, Drama, 8.8, 142
-El Caballero Oscuro, Action, 9.0, 152
+The Dark Knight, Action, 9.0, 152
 Toy Story, Animation, 8.3, 81
 Pulp Fiction, Crime, 8.9, 154
 La La Land, Musical, 8.0, 128
-El Resplandor, Horror, 8.4, 146
+The Shining, Horror, 8.4, 146
 Titanic, Romance, 7.8, 195
-Gladiador, Adventure, 8.5, 155
-Matrix, Sci-Fi, 8.7, 136
-El Gran Hotel Budapest, Comedy, 8.1, 99
+Gladiator, Adventure, 8.5, 155
+The Matrix, Sci-Fi, 8.7, 136
+The Grand Budapest Hotel, Comedy, 8.1, 99
 Jurassic Park, Adventure, 8.1, 127
-El Silencio de los Inocentes, Thriller, 8.6, 118
-La Vida es Bella, Drama, 8.6, 116
-Mad Max: Furia en el Camino, Action, 8.1, 120
+The Silence of the Lambs, Thriller, 8.6, 118
+Life is Beautiful, Drama, 8.6, 116
+Mad Max: Fury Road, Action, 8.1, 120
 Coco, Animation, 8.4, 105
-El Laberinto del Fauno, Fantasy, 8.2, 118
-Harry Potter y la piedra filosofal, Fantasy, 7.6, 152
-Harry Potter y la camara secreta, Fantasy, 7.4, 161
-Harry Potter y el prisionero de Azkaban, Fantasy, 7.9, 142
-Harry Potter y el caliz de fuego, Fantasy, 7.7, 157
+Pan's Labyrinth, Fantasy, 8.2, 118
+Harry Potter and the Philosopher's Stone, Fantasy, 7.6, 152
+Harry Potter and the Chamber of Secrets, Fantasy, 7.4, 161
+Harry Potter and the Prisoner of Azkaban, Fantasy, 7.9, 142
+The Shawshank Redemption, Drama, 9.3, 142
+The Godfather: Part II, Crime, 9.0, 202
+The Dark Knight Rises, Action, 8.4, 164
+Interstellar, Sci-Fi, 8.6, 169
+The Matrix Reloaded, Sci-Fi, 7.2, 138
+The Matrix Revolutions, Sci-Fi, 6.8, 129
+The Lord of the Rings: The Two Towers, Fantasy, 8.7, 179
+The Lord of the Rings: The Return of the King, Fantasy, 8.9, 201
+Star Wars: Episode IV - A New Hope, Sci-Fi, 8.6, 121
+Star Wars: Episode V - The Empire Strikes Back, Sci-Fi, 8.7, 124
+Star Wars: Episode VI - Return of the Jedi, Sci-Fi, 8.3, 131
+Avengers: Endgame, Action, 8.4, 181
+Avengers: Infinity War, Action, 8.4, 149
+Iron Man, Action, 7.9, 126
+Iron Man 2, Action, 7.0, 124
+Iron Man 3, Action, 7.1, 130
+Captain America: The First Avenger, Action, 6.9, 124
+Captain America: The Winter Soldier, Action, 7.7, 136
+Captain America: Civil War, Action, 7.8, 147
+Guardians of the Galaxy, Sci-Fi, 8.0, 121
+Guardians of the Galaxy Vol. 2, Sci-Fi, 7.6, 136
+Thor, Action, 7.0, 115
+Thor: The Dark World, Action, 6.9, 112
+Thor: Ragnarok, Action, 7.9, 130
+Black Panther, Action, 7.3, 134
+Doctor Strange, Sci-Fi, 7.5, 115
+Spider-Man: Homecoming, Action, 7.4, 133
+Spider-Man: Far From Home, Action, 7.5, 129
+Spider-Man: No Way Home, Action, 8.3, 148
+The Lion King (2019), Animation, 6.9, 118
+Frozen, Animation, 7.4, 102
+Frozen II, Animation, 6.8, 103
+Moana, Animation, 7.6, 107
+Zootopia, Animation, 8.0, 108
+Tangled, Animation, 7.7, 100
+Big Hero 6, Animation, 7.8, 102
+Wreck-It Ralph, Animation, 7.7, 101
+Ralph Breaks the Internet, Animation, 7.0, 112
+Inside Out, Animation, 8.1, 95
+Finding Nemo, Animation, 8.1, 100
+Finding Dory, Animation, 7.3, 97
+Toy Story 2, Animation, 7.9, 92
+Toy Story 3, Animation, 8.3, 103
+Toy Story 4, Animation, 7.8, 100
+Monsters, Inc., Animation, 8.1, 92
+Monsters University, Animation, 7.3, 104
+The Incredibles, Animation, 8.0, 115
+The Incredibles 2, Animation, 7.6, 118
+Cars, Animation, 7.1, 117
+Cars 2, Animation, 6.1, 106
+Cars 3, Animation, 6.7, 102
+Ratatouille, Animation, 8.0, 111
+Up, Animation, 8.2, 96
+Brave, Animation, 7.1, 93
+The Good Dinosaur, Animation, 6.7, 93
+Onward, Animation, 7.4, 102
+Soul, Animation, 8.1, 100
+Luca, Animation, 7.5, 95
+Encanto, Animation, 7.3, 102
+Raya and the Last Dragon, Animation, 7.4, 107
+The Little Mermaid, Animation, 7.6, 83
+Beauty and the Beast, Animation, 8.0, 84
+Aladdin, Animation, 8.0, 90
+The Jungle Book, Animation, 7.6, 78
+Mulan, Animation, 7.6, 88
+Hercules, Animation, 7.3, 93
+Tarzan, Animation, 7.3, 88
+The Hunchback of Notre Dame, Animation, 7.0, 91
+Pocahontas, Animation, 6.7, 81
+The Princess and the Frog, Animation, 7.1, 97
+The Revenant, Adventure, 8.0, 156
+Django Unchained, Western, 8.4, 165
+The Wolf of Wall Street, Biography, 8.2, 180
+Fight Club, Drama, 8.8, 139
+The Social Network, Biography, 7.7, 120
+The Departed, Crime, 8.5, 151
+The Prestige, Mystery, 8.5, 130
+The Green Mile, Drama, 8.6, 189
+American History X, Drama, 8.5, 119
+Se7en, Crime, 8.6, 127
+The Usual Suspects, Crime, 8.5, 106
+Braveheart, Biography, 8.3, 178
+Saving Private Ryan, War, 8.6, 169
+Schindler's List, Biography, 8.9, 195
+Goodfellas, Crime, 8.7, 146
+The Pianist, Biography, 8.5, 150
+A Beautiful Mind, Biography, 8.2, 135
+The Imitation Game, Biography, 8.0, 113
+The Great Gatsby, Drama, 7.2, 143
+The Pursuit of Happyness, Biography, 8.0, 117
+The Theory of Everything, Biography, 7.7, 123
+The King's Speech, Biography, 8.0, 118
+The Aviator, Biography, 7.5, 170
+Catch Me If You Can, Biography, 8.1, 141
+The Big Short, Biography, 7.8, 130
+The Blind Side, Biography, 7.6, 129
+12 Years a Slave, Biography, 8.1, 134
+The Help, Drama, 8.1, 146
+Argo, Biography, 7.7, 120
+Spotlight, Biography, 8.1, 129
+The Martian, Sci-Fi, 8.0, 144
+Gravity, Sci-Fi, 7.7, 91
+Blade Runner 2049, Sci-Fi, 8.0, 164
+Arrival, Sci-Fi, 7.9, 116
+Her, Sci-Fi, 8.0, 126
+Ex Machina, Sci-Fi, 7.7, 108
+The Shape of Water, Fantasy, 7.3, 123
+Birdman, Comedy, 7.7, 119
+Moonlight, Drama, 7.4, 111
+Whiplash, Drama, 8.5, 106
+Black Swan, Drama, 8.0, 108
+The Fighter, Biography, 7.8, 116
+The Town, Crime, 7.5, 125
+Gone Girl, Thriller, 8.1, 149
+The Girl with the Dragon Tattoo, Crime, 7.8, 158
+The Hunger Games, Sci-Fi, 7.2, 142
+Catching Fire, Sci-Fi, 7.5, 146
+Mockingjay Part 1, Sci-Fi, 6.6, 123
+Mockingjay Part 2, Sci-Fi, 6.5, 137
+The Twilight Saga: Eclipse, Fantasy, 5.0, 124
+The Twilight Saga: Breaking Dawn Part 1, Fantasy, 4.9, 117
+The Twilight Saga: Breaking Dawn Part 2, Fantasy, 5.5, 115
