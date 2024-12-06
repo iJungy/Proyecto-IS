@@ -79,8 +79,8 @@ Movie *input_movie(const char *filename, int *nmovies) {
   return movies;
 }
 
-//--------------Funciones para agrupar peliculas por
-// genero---------------------------- Se usa mergesort intercambiar películas
+//--------------Funciones para agrupar peliculas porgenero----------------------------
+// ----------------------------- Se usa mergesort intercambiar películas -------------------------
 void swap(Movie *a, Movie *b) {
   Movie temp = *a;
   *a = *b;
@@ -167,8 +167,8 @@ void group_by_genre(Movie movies[], int nmovies) {
   }
 }
 //-------------------------------------------------------------------------------
-//--------------Funciones para buscar pelicula----------------------------------
-// Usando algoritmo KMP
+//----------------- Funciones para buscar pelicula----------------------------------
+// ------------------------ Usando algoritmo KMP --------------------------------
 
 // funcion para construir la tabla de prefijos del patron
 void buildPrefixTable(const char *pattern, int *prefix, int m) {
@@ -240,9 +240,7 @@ void search(Movie *movies, int nmovies, const char *keyword) {
   }
 }
 //-------------------------------------------------------------------------------
-//--------------Cosas para el
-// historial------------------------------------------ usando queues para la
-// complejidad
+//--------------Cosas para el historial usando queues para la complejidad -------------
 typedef struct QueueNode {
   Movie *movie;
   struct QueueNode *sgt;
@@ -314,8 +312,7 @@ void mostrarhistorial(Queue *queue) {
 }
 
 //-------------------------------------------------------------------------------
-// ----------------------------TOP
-// 10--------------------------------------------
+// ----------------------------TOP 10 --------------------------------------------
 // ----------------------------HEAPSORT------------------------------------------
 void heap(Movie arr[], int n, int i) {
   int large = i;
@@ -354,9 +351,8 @@ void showtop10(Movie movie[], int num_movies) {
 }
 
 // ----------------------------------------------------------------------------
-
 // --------------- Peliculas por estrellas ------------------------------------
-//
+// ------------------------------------------------------------------------
 void countingsortrating(Movie movies[], int num_movies) {
   // Ponemos el rango de rating que tenemos en el documento
   float min_rating = movies[0].rating;
@@ -432,8 +428,7 @@ void countingsortrating(Movie movies[], int num_movies) {
   free(output);
 }
 // ------------------------------------------------------------------------------
-// ------------------ Cantidad Para Tiempo Exacto
-// --------------------------------
+// ------------------ Cantidad Para Tiempo Exacto --------------------------------
 int mochila(Movie movies[], int nmovies, int t, int index, int *select,
             int size) {
   if (t == 0)
@@ -469,7 +464,7 @@ void calculartimet(Movie movies[], int nmovies, int t) {
 }
 // ------------------------------------------------------------------------------
 
-// --------------- Metodo para menu --------------------------------------------
+// ------------------- Metodo para menu --------------------------------------------
 void menu(Movie *movies, int nmovies, Queue *movieQueue) {
   int x;
 
@@ -482,32 +477,18 @@ void menu(Movie *movies, int nmovies, Queue *movieQueue) {
       "\n");
 
   do {
-    printf(
-        MAGENTA
-        "+--------------------------------------------------------------+\n");
-    printf(
-        "|                          MENU PRINCIPAL                      |\n");
-    printf(
-        "+--------------------------------------------------------------+\n");
-    printf(
-        "| 1. Mostrar peliculas agrupadas por genero                    |\n");
-    printf(
-        "| 2. Mostrar top 10                                            |\n");
-    printf(
-        "| 3. Peliculas ordenadas por calificacion (1-5 estrellas)      |\n");
-    printf(
-        "| 4. Calcular cuantas peliculas puede ver en el tiempo deseado |\n");
-    printf(
-        "| 5. Buscar pelicula                                           |\n");
-    printf(
-        "| 6. Ver y eliminar primer pelicula en el historial            |\n");
-    printf(
-        "| 7. Ver todo el historial de peliculas vistas                 |\n");
-    printf(
-        "| 8. Salir                                                     |\n");
-    printf(
-        "+--------------------------------------------------------------+" RESET
-        "\n");
+    printf(MAGENTA"+--------------------------------------------------------------+\n");
+    printf("|                          MENU PRINCIPAL                      |\n");
+    printf("+--------------------------------------------------------------+\n");
+    printf("| 1. Mostrar peliculas agrupadas por genero                    |\n");
+    printf("| 2. Mostrar top 10                                            |\n");
+    printf("| 3. Peliculas ordenadas por calificacion (1-5 estrellas)      |\n");
+    printf("| 4. Calcular cuantas peliculas puede ver en el tiempo deseado |\n");
+    printf("| 5. Buscar pelicula                                        |\n");
+    printf("| 6. Ver y eliminar primer pelicula en el historial            |\n");
+    printf("| 7. Ver todo el historial de peliculas vistas                 |\n");
+    printf("| 8. Salir                                                     |\n");
+    printf("+--------------------------------------------------------------+" RESET"\n");
     printf("Elija la opcion deseada: ");
     scanf("%d", &x);
     getchar();
