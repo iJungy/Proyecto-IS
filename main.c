@@ -463,19 +463,12 @@ void calculartimet(Movie movies[], int nmovies, int t) {
   }
 }
 // ------------------------------------------------------------------------------
-
 // ------------------- Metodo para menu --------------------------------------------
 void menu(Movie *movies, int nmovies, Queue *movieQueue) {
   int x;
-
-  printf(
-      MAGENTA
-      "\n+--------------------------------------------------------------+\n");
+  printf(MAGENTA"\n+--------------------------------------------------------------+\n");
   printf("|                       Bienvenido a UVetflix                  |\n");
-  printf(
-      "+--------------------------------------------------------------+" RESET
-      "\n");
-
+  printf("+--------------------------------------------------------------+" RESET"\n");
   do {
     printf(MAGENTA"+--------------------------------------------------------------+\n");
     printf("|                          MENU PRINCIPAL                      |\n");
@@ -492,7 +485,6 @@ void menu(Movie *movies, int nmovies, Queue *movieQueue) {
     printf("Elija la opcion deseada: ");
     scanf("%d", &x);
     getchar();
-
     switch (x) {
     case 1:
       group_by_genre(movies, nmovies);
@@ -576,7 +568,7 @@ void menu(Movie *movies, int nmovies, Queue *movieQueue) {
 }
 
 // ------------------------------------------------------------------------------
-
+// ------------------------- MENU -------------------------------------------
 int main() {
   int nmovies;
   Queue movieQueue;
