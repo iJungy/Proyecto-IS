@@ -65,7 +65,7 @@ Finding Dory, Animation, 7.3, 97
 Toy Story 2, Animation, 7.9, 92
 Toy Story 3, Animation, 8.3, 103
 Toy Story 4, Animation, 7.8, 100
-Monsters, Inc., Animation, 8.1, 92
+Monsters Inc., Animation, 8.1, 92
 Monsters University, Animation, 7.3, 104
 The Incredibles, Animation, 8.0, 115
 The Incredibles 2, Animation, 7.6, 118
