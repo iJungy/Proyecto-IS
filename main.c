@@ -477,7 +477,7 @@ void menu(Movie *movies, int nmovies, Queue *movieQueue) {
     printf("| 2. Mostrar top 10                                            |\n");
     printf("| 3. Peliculas ordenadas por calificacion (1-5 estrellas)      |\n");
     printf("| 4. Calcular cuantas peliculas puede ver en el tiempo deseado |\n");
-    printf("| 5. Buscar pelicula                                        |\n");
+    printf("| 5. Buscar pelicula                                           |\n");
     printf("| 6. Ver y eliminar primer pelicula en el historial            |\n");
     printf("| 7. Ver todo el historial de peliculas vistas                 |\n");
     printf("| 8. Salir                                                     |\n");
