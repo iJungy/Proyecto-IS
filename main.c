@@ -79,24 +79,24 @@ Movie *input_movie(const char *filename, int *nmovies) {
   return movies;
 }
 
-//--------------Funciones para agrupar peliculas porgenero----------------------------
-// ----------------------------- Se usa mergesort intercambiar películas -------------------------
 void swap(Movie *a, Movie *b) {
   Movie temp = *a;
   *a = *b;
   *b = temp;
 }
 
+//--------------Funciones para agrupar peliculas porgenero----------------------------
+// ----------------------------- Se usa mergesort intercambiar películas -------------
 // función auxiliar para fusionar dos mitades
 void merge(Movie arr[], int left, int center, int right) {
   int n1 = center - left + 1;
   int n2 = right - center;
 
-  // crear arrays temporales
+  //crear arrays temporales
   Movie *leftArr = (Movie *)malloc(n1 * sizeof(Movie));
   Movie *rightArr = (Movie *)malloc(n2 * sizeof(Movie));
 
-  // copiar datos a los arrays temporales
+  //copiar datos a los arrays temporales
   for (int i = 0; i < n1; i++) {
     leftArr[i] = arr[left + i];
   }
@@ -104,7 +104,7 @@ void merge(Movie arr[], int left, int center, int right) {
     rightArr[j] = arr[center + 1 + j];
   }
 
-  // mezclar las dos mitades ordenadas
+  //mezclar las dos mitades ordenadas
   int i = 0, j = 0, k = left;
   while (i < n1 && j < n2) {
     if (strcmp(leftArr[i].genre, rightArr[j].genre) <= 0) {
@@ -117,7 +117,7 @@ void merge(Movie arr[], int left, int center, int right) {
     k++;
   }
 
-  // copiar los elementos restantes de ambas mitades
+  //copiar los elementos restantes de ambas mitades
   while (i < n1) {
     arr[k] = leftArr[i];
     i++;
@@ -129,36 +129,36 @@ void merge(Movie arr[], int left, int center, int right) {
     k++;
   }
 
-  // liberar memoria de los arrays temporales
+  //liberar memoria de los arrays temporales
   free(leftArr);
   free(rightArr);
 }
 
-// implementación de MergeSort
+//implementación de MergeSort
 void mergesort(Movie arr[], int left, int right) {
   if (left < right) {
     int center = left + (right - left) / 2;
 
-    // dividir en mitades y ordenarlas recursivamente
+    //dividir en mitades y ordenarlas recursivamente
     mergesort(arr, left, center);
     mergesort(arr, center + 1, right);
 
-    // Fusionar las mitades ordenadas
+    //fusionar las mitades ordenadas
     merge(arr, left, center, right);
   }
 }
 
-// función para agrupar las películas por género usando MergeSort
+//función para agrupar las películas por género usando MergeSort
 void group_by_genre(Movie movies[], int nmovies) {
-  // ordenar las películas por género
+  //ordenar las películas por género
   mergesort(movies, 0, nmovies - 1);
 
-  // agrupar e imprimir
+  //agrupar e imprimir
   printf("Peliculas agrupadas por genero:\n");
   char current_genre[50] = "";
   for (int i = 0; i < nmovies; i++) {
     if (strcmp(current_genre, movies[i].genre) != 0) {
-      // nuevo género encontrado
+      //nuevo género encontrado
       strcpy(current_genre, movies[i].genre);
       printf("\nGenero: %s\n", current_genre);
     }
@@ -167,10 +167,10 @@ void group_by_genre(Movie movies[], int nmovies) {
   }
 }
 //-------------------------------------------------------------------------------
-//----------------- Funciones para buscar pelicula----------------------------------
+//----------------- Funciones para buscar pelicula-------------------------------
 // ------------------------ Usando algoritmo KMP --------------------------------
 
-// funcion para construir la tabla de prefijos del patron
+//funcion para construir la tabla de prefijos del patron
 void buildPrefixTable(const char *pattern, int *prefix, int m) {
   int j = 0;
   prefix[0] = 0;
@@ -181,7 +181,7 @@ void buildPrefixTable(const char *pattern, int *prefix, int m) {
     } else {
       if (j != 0) {
         j = prefix[j - 1];
-        i--; // retrocede y reintenta
+        i--;
       } else {
         prefix[i] = 0;
       }
@@ -189,7 +189,7 @@ void buildPrefixTable(const char *pattern, int *prefix, int m) {
   }
 }
 
-// funcion KMP para buscar palabras clave en un texto
+//funcion KMP para buscar palabras clave en un texto
 int KMP(const char *text, const char *pattern) {
   int n = strlen(text);
   int m = strlen(pattern);
@@ -209,7 +209,7 @@ int KMP(const char *text, const char *pattern) {
     }
     if (j == m) {
       free(prefix);
-      return 1; // patron encontrado
+      return 1;
     } else if (i < n && pattern[j] != text[i]) {
       if (j != 0) {
         j = prefix[j - 1];
@@ -220,7 +220,7 @@ int KMP(const char *text, const char *pattern) {
   }
 
   free(prefix);
-  return 0; // patron no encontrado
+  return 0;
 }
 void search(Movie *movies, int nmovies, const char *keyword) {
   printf("Resultados para la palabra clave '%s':\n", keyword);
@@ -240,7 +240,7 @@ void search(Movie *movies, int nmovies, const char *keyword) {
   }
 }
 //-------------------------------------------------------------------------------
-//--------------Cosas para el historial usando queues para la complejidad -------------
+//--------------Cosas para el historial usando queues para la complejidad -------
 typedef struct QueueNode {
   Movie *movie;
   struct QueueNode *sgt;
@@ -256,7 +256,7 @@ void initQueue(Queue *queue) {
   queue->final = NULL;
 }
 
-// agregar al historial
+//agregar al historial
 void enqueue(Queue *queue, Movie *movie) {
   QueueNode *newNode = (QueueNode *)malloc(sizeof(QueueNode));
   if (newNode == NULL) {
@@ -275,7 +275,7 @@ void enqueue(Queue *queue, Movie *movie) {
   printf("Se ha agregadp '%s' al historial de reproduccion.\n", movie->title);
 }
 
-// eliminar la primer pelicula vista del historial
+//eliminar la primer pelicula vista del historial
 Movie *dequeue(Queue *queue) {
   if (queue->inicio == NULL) {
     printf("El historial esta vacio.\n");
@@ -294,7 +294,7 @@ Movie *dequeue(Queue *queue) {
   return movie;
 }
 
-// mostrar el historial
+//mostrar el historial
 void mostrarhistorial(Queue *queue) {
   if (queue->inicio == NULL) {
     printf("El historial esta vacio.\n");
@@ -312,7 +312,7 @@ void mostrarhistorial(Queue *queue) {
 }
 
 //-------------------------------------------------------------------------------
-// ----------------------------TOP 10 --------------------------------------------
+// ----------------------------TOP 10 -------------------------------------------
 // ----------------------------HEAPSORT------------------------------------------
 void heap(Movie arr[], int n, int i) {
   int large = i;
@@ -350,11 +350,11 @@ void showtop10(Movie movie[], int num_movies) {
   }
 }
 
-// ----------------------------------------------------------------------------
-// --------------- Peliculas por estrellas ------------------------------------
+// ------------------------------------------------------------------------
+// --------------- Peliculas por estrellas --------------------------------
 // ------------------------------------------------------------------------
 void countingsortrating(Movie movies[], int num_movies) {
-  // Ponemos el rango de rating que tenemos en el documento
+  //Ponemos el rango de rating que tenemos en el documento
   float min_rating = movies[0].rating;
   float max_rating = movies[0].rating;
   for (int i = 1; i < num_movies; i++) {
@@ -364,19 +364,19 @@ void countingsortrating(Movie movies[], int num_movies) {
       max_rating = movies[i].rating;
   }
 
-  // Redondeamos las cantidades
+  //Redondeamos las cantidades
   int min = (int)floor(min_rating);
   int max = (int)ceil(max_rating);
   int range = max - min + 1;
 
-  // Creamos el array
+  //Creamos el array
   int *count = calloc(range, sizeof(int));
   if (count == NULL) {
     printf("Error al asignar memoria\n");
     return;
   }
 
-  // Guardamos el conteo de cada ratign
+  //Guardamos el conteo de cada ratign
   for (int i = 0; i < num_movies; i++) {
     int index = (int)roundf(movies[i].rating) - min;
     if (index >= 0 && index < range) {
@@ -384,12 +384,12 @@ void countingsortrating(Movie movies[], int num_movies) {
     }
   }
 
-  // Cambiar el conteo -> count[i] para que se igual a la posicion actual
+  //cambiamos el conteo -> count[i] para que se igual a la posicion actual
   for (int i = 1; i < range ; i++) {
     count[i] += count[i - 1];
   }
 
-  // Creamos el array dfonde se guardan los resultados ordenads
+  //creamos el array dfonde se guardan los resultados ordenads
   Movie *output = malloc(num_movies * sizeof(Movie));
   if (output == NULL) {
     printf("Error al asignar memoria\n");
@@ -397,7 +397,7 @@ void countingsortrating(Movie movies[], int num_movies) {
     return;
   }
 
-  // Ordenamos los elementos
+  //ordenamos los elementos
   for (int i = num_movies -1; i >= 0; i--) {
     int index = (int)roundf(movies[i].rating) - min;
     if (index >= 0 && index < range) {
@@ -406,12 +406,12 @@ void countingsortrating(Movie movies[], int num_movies) {
     }
   }
 
-  // Ponemos el arreglo de salida sobre el orginal
+  //ponemos el arreglo de salida sobre el orginal
   for (int i = 0; i < num_movies; i++) {
     movies[i] = output[i];
   }
 
-  // Imprimimos las pelioculas de mayor a menor
+  //imprimimos las pelioculas de mayor a menor
   printf("Peliculas ordenadas por calificacion (mayor a menor estrellas):\n");
   for (int i = num_movies - 1; i >= 0; i--) {
     int starCount = (int)roundf(movies[i].rating) / 2;
@@ -423,12 +423,12 @@ void countingsortrating(Movie movies[], int num_movies) {
       movies[i].title, stars, movies[i].time);
   }
 
-  // Liberamos memoria
+  //liberamos memoria
   free(count);
   free(output);
 }
 // ------------------------------------------------------------------------------
-// ------------------ Cantidad Para Tiempo Exacto --------------------------------
+// ------------------ Cantidad Para Tiempo Exacto -------------------------------
 int mochila(Movie movies[], int nmovies, int t, int index, int *select,
             int size) {
   if (t == 0)
@@ -463,7 +463,7 @@ void calculartimet(Movie movies[], int nmovies, int t) {
   }
 }
 // ------------------------------------------------------------------------------
-// ------------------- Metodo para menu --------------------------------------------
+// ------------------- Metodo para menu -----------------------------------------
 void menu(Movie *movies, int nmovies, Queue *movieQueue) {
   int x;
   printf(MAGENTA"\n+--------------------------------------------------------------+\n");
@@ -505,7 +505,7 @@ void menu(Movie *movies, int nmovies, Queue *movieQueue) {
       char keyword[MAX_TITLE];
       printf("Introduce una palabra clave: ");
       fgets(keyword, sizeof(keyword), stdin);
-      strtok(keyword, "\n"); // eliminar salto de línea
+      strtok(keyword, "\n");
 
       int matchedIndices[nmovies];
       int matchCount = 0;
@@ -516,7 +516,7 @@ void menu(Movie *movies, int nmovies, Queue *movieQueue) {
           printf("%d. Titulo: %s, Genero: %s, Rating: %.1f, Duracion: %d\n",
                  matchCount + 1, movies[i].title, movies[i].genre,
                  movies[i].rating, movies[i].time);
-          matchedIndices[matchCount++] = i; // guardar indice de coincidencia
+          matchedIndices[matchCount++] = i; //guardar indice de coincidencia
         }
       }
 
@@ -568,7 +568,7 @@ void menu(Movie *movies, int nmovies, Queue *movieQueue) {
 }
 
 // ------------------------------------------------------------------------------
-// ------------------------- MENU -------------------------------------------
+// ------------------------- MAIN -------------------------------------------
 int main() {
   int nmovies;
   Queue movieQueue;
