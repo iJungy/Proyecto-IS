@@ -332,9 +332,11 @@ void heap(Movie arr[], int n, int i) {
 }
 
 void heapSort(Movie arr[], int n) {
+   // Construimos el heap
   for (int i = n / 2 - 1; i >= 0; i--)
     heap(arr, n, i);
 
+  // ordenamiento del heap
   for (int i = n - 1; i > 0; i--) {
     swap(&arr[0], &arr[i]);
     heap(arr, i, 0);
