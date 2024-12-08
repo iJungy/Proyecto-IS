@@ -170,9 +170,9 @@ void group_by_genre(Movie movies[], int nmovies) {
 }
 //-------------------------------------------------------------------------------
 //----------------- Funciones para buscar
-// pelicula----------------------------------
+// pelicula---------------------------------------------------------------------
 // ------------------------ Usando algoritmo KMP
-// --------------------------------
+// -----------------------------------------------------------------------------
 
 // funcion para construir la tabla de prefijos del patron
 void buildPrefixTable(const char *pattern, int *prefix, int m) {
@@ -307,19 +307,26 @@ void mostrarhistorial(Queue *queue) {
   }
 
   QueueNode *current = queue->inicio;
-  printf("Historial de peliculas vistas:\n");
+  printf(CYAN"\n+--------------------------------------------------------------------+\n");
+  printf("|                          Historial                    "
+         "             |\n");
+  printf("+--------------------------------------------------------------------+" RESET);
+  printf(CYAN"\n+--------------------------------------------------------------------+\n");
+  printf("|%-25s %-20s %-10s %-10s", "Titulo", "Genero", "Rating", "Duracion  |\n");
+  printf("+--------------------------------------------------------------------+\n");
   while (current != NULL) {
-    printf("Titulo: %s, Genero: %s, Rating: %.1f, Duracion: %d\n",
+    printf("|%-25s %-20s %-10.1f %-10d|\n",
            current->movie->title, current->movie->genre, current->movie->rating,
            current->movie->time);
     current = current->sgt;
-  }
+  }printf(
+        "+--------------------------------------------------------------------+"RESET"\n");
 }
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 // ----------------------------TOP 10
-// --------------------------------------------
-// ----------------------------HEAPSORT------------------------------------------
+// -----------------------------------------------------------------------------
+// ----------------------------HEAPSORT-----------------------------------------
 void heap(Movie arr[], int n, int i) {
   int large = i;
   int left = 2 * i + 1;
@@ -356,8 +363,8 @@ void showtop10(Movie movie[], int num_movies) {
   }
 }
 
-// ----------------------------------------------------------------------------
-// --------------- Peliculas por estrellas ------------------------------------
+// ------------------------------------------------------------------------
+// --------------- Peliculas por estrellas --------------------------------
 // ------------------------------------------------------------------------
 void countingsortrating(Movie movies[], int num_movies) {
   // Ponemos el rango de rating que tenemos en el documento
@@ -434,7 +441,7 @@ void countingsortrating(Movie movies[], int num_movies) {
   free(output);
 }
 // ------------------------------------------------------------------------------
-// ------------------ Cantidad Para Tiempo Exacto --------------------------------
+// ------------------ Cantidad Para Tiempo Exacto -------------------------------
 int range[101][1001]; // tabla de memoitaizion
 /* La memoización es una forma de almacenamiento en caché
  * que almacena las salidas de una función en función de sus entradas.
@@ -493,9 +500,7 @@ void menu(Movie *movies, int nmovies, Queue *movieQueue) {
       MAGENTA
       "\n+--------------------------------------------------------------+\n");
   printf("|                       Bienvenido a UVetflix                  |\n");
-  printf(
-      "+--------------------------------------------------------------+" RESET
-      "\n");
+  printf("+--------------------------------------------------------------+" RESET"\n");
   do {
     printf(
         MAGENTA
@@ -609,8 +614,8 @@ void menu(Movie *movies, int nmovies, Queue *movieQueue) {
   } while (x != 8);
 }
 
-// ------------------------------------------------------------------------------
-// ------------------------- MENU -------------------------------------------
+// --------------------------------------------------------------------------
+// ------------------------- MAIN -------------------------------------------
 int main() {
   int nmovies;
   Queue movieQueue;
